@@ -9,5 +9,8 @@
 
     <!-- Include the lidar sensor -->
     <xacro:include filename="lidar.xacro" />
+
+    <!-- Include the camera sensor -->
+    <xacro:include filename="camera.xacro" />
     
 </robot>

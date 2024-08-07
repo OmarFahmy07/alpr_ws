@@ -24,6 +24,14 @@
     <xacro:property name="laser_max_angle" value="3.14"/>
     <xacro:property name="laser_min_range" value="0.3"/>
     <xacro:property name="laser_max_range" value="12"/>
-    
+    <xacro:property name="camera_length" value="0.01"/>
+    <xacro:property name="camera_width" value="0.03"/>
+    <xacro:property name="camera_height" value="0.03"/>
+    <xacro:property name="camera_update_rate" value="10"/>
+    <xacro:property name="camera_horizontal_fov" value="1.089"/>
+    <xacro:property name="camera_image_width" value="640"/>
+    <xacro:property name="camera_image_height" value="480"/>
+    <xacro:property name="camera_clip_near" value="0.05"/>
+    <xacro:property name="camera_clip_far" value="8.0"/>
 
 </robot>

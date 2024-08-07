@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    
+    <xacro:include filename="robot_params.xacro"/>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="camera_link"/>
+        <origin xyz="${chassis_length + camera_length/2} 0 ${3*chassis_height/4}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${camera_length} ${camera_width} ${camera_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="camera_optical_joint" type="fixed">
+        <parent link="camera_link"/>
+        <child link="camera_optical_link"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="camera_optical_link"></link>
+
+    <gazebo reference="camera_link">
+        <material>Gazebo/Red</material>
+
+        <sensor name="camera" type="camera">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>${camera_update_rate}</update_rate>
+            <camera>
+                <horizontal_fov>${camera_horizontal_fov}</horizontal_fov>
+                <image>
+                    <format>R8G8B8</format>
+                    <width>${camera_image_width}</width>
+                    <height>${camera_image_height}</height>
+                </image>
+                <clip>
+                    <near>${camera_clip_near}</near>
+                    <far>${camera_clip_far}</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <frame_name>camera_optical_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>
