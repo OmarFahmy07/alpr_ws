@@ -6,5 +6,8 @@
 
     <!-- Include the gazebo control plugin that controls driving -->
     <xacro:include filename="gazebo_control.xacro" />
+
+    <!-- Include the lidar sensor -->
+    <xacro:include filename="lidar.xacro" />
     
 </robot>

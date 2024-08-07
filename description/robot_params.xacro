@@ -15,5 +15,15 @@
     <xacro:property name="chassis_mass" value="0.5"/>
     <xacro:property name="wheel_mass" value="0.05"/>
     <xacro:property name="caster_wheel_mass" value="0.1"/>
+    <xacro:property name="laser_length" value="0.04"/>
+    <xacro:property name="laser_radius" value="0.05"/>
+    <xacro:property name="laser_mass" value="0.1"/>
+    <xacro:property name="laser_update_rate" value="10"/>
+    <xacro:property name="laser_samples" value="360"/>
+    <xacro:property name="laser_min_angle" value="-3.14"/>
+    <xacro:property name="laser_max_angle" value="3.14"/>
+    <xacro:property name="laser_min_range" value="0.3"/>
+    <xacro:property name="laser_max_range" value="12"/>
+    
 
 </robot>
