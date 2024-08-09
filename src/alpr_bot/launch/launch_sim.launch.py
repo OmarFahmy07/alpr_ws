@@ -31,6 +31,14 @@ def generate_launch_description():
                                    '-entity', 'alpr_bot'],
                         output='screen')
 
+    # Add the object_detection node
+    object_detection_node = Node(
+        package='object_detection',  # Package name where the node is located
+        executable='object_detection',  # Name of the executable defined in setup.py
+        name='object_detection_node',  # Name of the node
+        output='screen',  # Output setting
+        parameters=[]  # You can add parameters here if needed
+    )
 
 
     # Launch them all!
@@ -38,4 +46,5 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
+        object_detection_node,
     ])
