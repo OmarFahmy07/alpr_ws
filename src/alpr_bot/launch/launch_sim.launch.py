@@ -46,5 +46,5 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        object_detection_node,
+        #object_detection_node,
     ])

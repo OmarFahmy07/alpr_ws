@@ -12,5 +12,12 @@
 
     <!-- Include the camera sensor -->
     <xacro:include filename="camera.xacro" />
+
+    <!-- Include the gps sensor -->
+    <xacro:include filename="gps.xacro" />
+
+    <!-- Include the imu sensor -->
+    <xacro:include filename="imu.xacro" />
+
     
 </robot>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:include filename="inertial_macros.xacro"/>
+    <xacro:include filename="robot_params.xacro"/>
+
+
+    <joint name="gps_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="gps_link"/>
+        <origin xyz="${chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+    </joint>
+
+
+    <link name="gps_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.01 0.01 0.01"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.01 0.01 0.01"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.125" x="0.01" y="0.01" z="0.01">
+            <origin xyz="-0.052 0 0.111" rpy="0 0 0"/>
+        </xacro:inertial_box>
+      
+    </link>
+
+
+
+    <gazebo reference="gps_link">
+        <sensor name="gps" type="gps">
+          <always_on>true</always_on>
+          <update_rate>1</update_rate>
+          <pose>0 0 0 0 0 0</pose>
+          <gps>
+            <position_sensing>
+              <horizontal>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.01</stddev>
+                </noise>
+              </horizontal>
+              <vertical>
+                <noise type="gaussian">
+                  <mean>0.0</mean>
+                  <stddev>0.01</stddev>
+                </noise>
+              </vertical>
+            </position_sensing>
+          </gps>
+          <plugin name="gps_plugin" filename="libgazebo_ros_gps_sensor.so">
+            <ros>
+              <remapping>~/out:=/gps/fix</remapping>
+            </ros>
+          </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>
