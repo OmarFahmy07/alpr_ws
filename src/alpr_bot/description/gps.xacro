@@ -9,9 +9,7 @@
         <parent link="chassis"/>
         <child link="gps_link"/>
         <origin xyz="${chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
-        <axis>
-          <xyz>0 0 1</xyz>
-        </axis>
+        <axis xyz="0 0 1"/>
     </joint>
 
 
@@ -28,10 +26,10 @@
                 <box size="0.01 0.01 0.01"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.125" x="0.01" y="0.01" z="0.01">
-            <origin xyz="-0.052 0 0.111" rpy="0 0 0"/>
+
+        <xacro:inertial_box mass="${gps_mass}" x="0.01" y="0.01" z="0.01">
+            <origin xyz="${chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
-      
     </link>
 
 
@@ -39,20 +37,19 @@
     <gazebo reference="gps_link">
         <sensor name="gps" type="gps">
           <always_on>true</always_on>
-          <update_rate>1</update_rate>
-          <pose>0 0 0 0 0 0</pose>
+          <update_rate>${gps_update_rate}</update_rate>
           <gps>
             <position_sensing>
               <horizontal>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>0.01</stddev>
+                  <stddev>${gps_noise_stddev}</stddev>
                 </noise>
               </horizontal>
               <vertical>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>0.01</stddev>
+                  <stddev>${gps_noise_stddev}</stddev>
                 </noise>
               </vertical>
             </position_sensing>

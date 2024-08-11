@@ -7,37 +7,50 @@
         <parent link="chassis"/>
         <child link="imu_link"/>
         <origin xyz="${chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
-        <axis>
-          <xyz>0 0 1</xyz>
-        </axis>
+        <axis xyz="0 0 1"/>
     </joint>
 
 
     <link name="imu_link">
+        <xacro:inertial_box mass="${imu_mass}" x="0.01" y="0.01" z="0.01">
+            <origin xyz="{chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
+        </xacro:inertial_box>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.01 0.01 0.01"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.01 0.01 0.01"/>
+            </geometry>
+        </collision>
     </link>
 
     <gazebo reference="imu_link">
         <sensor name="imu" type="imu">
           <always_on>true</always_on>
-          <update_rate>200</update_rate>
+          <update_rate>${imu_update_rate}</update_rate>
           <imu>
             <angular_velocity>
               <x>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>2e-4</stddev>
+                  <stddev>${imu_angular_velocity_stddev}</stddev>
                 </noise>
               </x>
               <y>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>2e-4</stddev>
+                  <stddev>${imu_angular_velocity_stddev}</stddev>
                 </noise>
               </y>
               <z>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>2e-4</stddev>
+                  <stddev>${imu_angular_velocity_stddev}</stddev>
                 </noise>
               </z>
             </angular_velocity>
@@ -45,19 +58,19 @@
               <x>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>1.7e-2</stddev>
+                  <stddev>${imu_linear_acceleration_stddev}</stddev>
                 </noise>
               </x>
               <y>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>1.7e-2</stddev>
+                  <stddev>${imu_linear_acceleration_stddev}</stddev>
                 </noise>
               </y>
               <z>
                 <noise type="gaussian">
                   <mean>0.0</mean>
-                  <stddev>1.7e-2</stddev>
+                  <stddev>${imu_linear_acceleration_stddev}</stddev>
                 </noise>
               </z>
             </linear_acceleration>

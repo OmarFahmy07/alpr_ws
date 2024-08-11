@@ -94,10 +94,6 @@
       <heading_deg>180</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>2227 384000000</sim_time>
-      <real_time>37 914594075</real_time>
-      <wall_time>1723315438 760446479</wall_time>
-      <iterations>37808</iterations>
       <model name='Audi_R8_2017'>
         <pose>-3.43209 3.30149 -0.006199 1.57225 -0 0</pose>
         <scale>1 1 1</scale>
