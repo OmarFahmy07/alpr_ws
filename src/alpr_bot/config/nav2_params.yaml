@@ -157,10 +157,10 @@ local_costmap:
       global_frame: odom
       robot_base_frame: base_link
       rolling_window: true
-      width: 3
-      height: 3
+      width: 8
+      height: 8
       resolution: 0.05
-      robot_radius: 0.22
+      robot_radius: 0.3
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -182,9 +182,9 @@ local_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 3.0
+          raytrace_max_range: 5.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 2.5
+          obstacle_max_range: 3.5
           obstacle_min_range: 0.0
       always_send_full_costmap: True
 
@@ -197,14 +197,14 @@ global_costmap:
       publish_frequency: 1.0
       global_frame: map
       robot_base_frame: base_link
-      robot_radius: 0.22
+      robot_radius: 0.3
       resolution: 0.1
       # When using GPS navigation you will potentially traverse huge environments which are not practical to
       # fit on a big static costmap. Thus it is recommended to use a rolling global costmap large enough to 
       # contain each pair of successive waypoints. See: https://github.com/ros-planning/navigation2/issues/2174
       rolling_window: True
-      width: 50
-      height: 50
+      width: 80
+      height: 80
       track_unknown_space: true
       # no static map
       plugins: ["obstacle_layer", "inflation_layer"]
@@ -218,9 +218,9 @@ global_costmap:
           clearing: True
           marking: True
           data_type: "LaserScan"
-          raytrace_max_range: 3.0
+          raytrace_max_range: 5.0
           raytrace_min_range: 0.0
-          obstacle_max_range: 2.5
+          obstacle_max_range: 3.5
           obstacle_min_range: 0.0
           # outdoors there will probably be more inf points
           inf_is_valid: true

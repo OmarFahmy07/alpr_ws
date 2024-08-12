@@ -13,7 +13,7 @@
 
     <link name="imu_link">
         <xacro:inertial_box mass="${imu_mass}" x="0.01" y="0.01" z="0.01">
-            <origin xyz="{chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
+            <origin xyz="${chassis_length/2} 0 ${chassis_length/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
