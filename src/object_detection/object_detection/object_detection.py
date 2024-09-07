@@ -41,10 +41,10 @@ class DetectorNode(Node):
 
         # Create a subscriber to listen to the messages received on the self.subscribe_topic topic.
         # The callback method is called when a message is received.
-        self.sub = self.create_subscription(Image, self.subscribe_topic, self.callback, 10)
+        self.sub = self.create_subscription(Image, self.subscribe_topic, self.callback, 1)
 
         # Create a publisher that publishes the processed image to the self.publish_topic topic.
-        self.pub = self.create_publisher(Image, self.publish_topic, 10)
+        self.pub = self.create_publisher(Image, self.publish_topic, 1)
 
         # Initialize a CvBridge object for converting between ROS image messages and OpenCV images
         self.cv_bridge = CvBridge()
@@ -64,6 +64,8 @@ class DetectorNode(Node):
 
         # Draw bounding boxes around detected objects on the image
         output_image = draw_bbox(img_opencv, bbox, label, conf)
+
+        output_image = cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB)
 
         # Convert the processed OpenCV image back to a ROS Image message
         img_msg = self.cv_bridge.cv2_to_imgmsg(output_image)

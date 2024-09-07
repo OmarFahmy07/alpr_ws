@@ -43,7 +43,7 @@
     </link>
 
     <gazebo reference="chassis">
-        <material>Gazebo/Test</material>
+        <material>Gazebo/TIT</material>
     </gazebo>
 
     

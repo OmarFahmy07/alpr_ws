@@ -42,16 +42,15 @@ class GpsWpCommander():
         """
         Function to start the waypoint following
         """
-        num_loops = 0
+        point = 0
         while True:
             self.navigator.waitUntilNav2Active(localizer='robot_localization')
             wps = self.wp_parser.get_wps()
             self.navigator.followGpsWaypoints(wps)
             while (not self.navigator.isTaskComplete()):
                 time.sleep(0.1)
-            num_loops+=1
-            print("wps completed successfully, ",num_loops )
-            time.sleep(5)
+            point = (point+1) % len(wps)
+            #time.sleep(1)
 
 
 def main():

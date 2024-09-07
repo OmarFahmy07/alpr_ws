@@ -6,7 +6,7 @@
     <!-- Robot Physical Dimensions -->
     <xacro:property name="chassis_length" value="0.35"/>
     <xacro:property name="chassis_width" value="0.35"/>
-    <xacro:property name="chassis_height" value="0.8"/>
+    <xacro:property name="chassis_height" value="0.55"/>
     <xacro:property name="chassis_mass" value="0.8"/>
 
     <xacro:property name="wheel_mass" value="0.05"/>
@@ -43,8 +43,8 @@
     <xacro:property name="camera_horizontal_fov" value="1.089"/>
     <xacro:property name="camera_image_width" value="640"/>
     <xacro:property name="camera_image_height" value="480"/>
-    <xacro:property name="camera_clip_near" value="0.05"/>
-    <xacro:property name="camera_clip_far" value="8.0"/>
+    <xacro:property name="camera_clip_near" value="0.1"/>
+    <xacro:property name="camera_clip_far" value="20.0"/>
 
 
     <!-- GPS Parameters -->
